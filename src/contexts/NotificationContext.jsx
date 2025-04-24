@@ -19,21 +19,21 @@ export const NotificationProvider = ({ children }) => {
       type: "interview"
     },
     { 
-      id: 1, 
+      id: 10, 
       text: "HR from TechCorp scheduled an interview for April 15", 
       read: false, 
       date: new Date(2025, 3, 15),
       type: "interview"
     },
     { 
-      id: 1, 
+      id: 11, 
       text: "HR from TechCorp scheduled an interview for April 15", 
       read: false, 
       date: new Date(2025, 3, 15),
       type: "interview"
     },
     { 
-      id: 1, 
+      id: 12, 
       text: "HR from TechCorp scheduled an interview for April 15", 
       read: false, 
       date: new Date(2025, 3, 15),

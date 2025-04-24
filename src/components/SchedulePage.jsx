@@ -9,7 +9,8 @@ export default function SchedulePage() {
   const { 
     notifications, 
     markAsRead, 
-    getNotificationsForDate 
+    getNotificationsForDate,
+    markAllAsRead 
   } = useNotifications();
 
   const [selectedDate, setSelectedDate] = useState(null);
@@ -91,6 +92,10 @@ export default function SchedulePage() {
   };
 
   const formatDateDisplay = (date) => date ? `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}` : '';
+
+  const handleMarkAllAsRead = () => {
+    markAllAsRead();
+  };
 
   return (
     <div className="max-w-[1800px] mx-auto p-2 sm:p-4 md:p-6 h-screen flex flex-col overflow-hidden">
@@ -188,11 +193,21 @@ export default function SchedulePage() {
                 <Bell size={18} className="mr-2 md:w-5 md:h-5" />
                 Notifications
               </h3>
-              {selectedDate && (
-                <span className="text-xs sm:text-sm bg-blue-100 text-blue-800 px-2 sm:px-3 py-1 rounded-full">
-                  {formatDateDisplay(selectedDate)}
-                </span>
-              )}
+              <div className="flex items-center gap-2">
+                {selectedDate && (
+                  <span className="text-xs sm:text-sm bg-blue-100 text-blue-800 px-2 sm:px-3 py-1 rounded-full">
+                    {formatDateDisplay(selectedDate)}
+                  </span>
+                )}
+                {notifications.some(n => !n.read) && (
+                  <button
+                    onClick={handleMarkAllAsRead}
+                    className="text-xs sm:text-sm text-blue-600 hover:text-blue-800 whitespace-nowrap"
+                  >
+                    Mark all as read
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="flex-1 overflow-y-auto">
